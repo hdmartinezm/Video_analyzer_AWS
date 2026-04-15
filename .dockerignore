@@ -1,0 +1,14 @@
+# Credenciales — nunca en la imagen
+backend/.env
+.env
+
+# Dependencias locales (se instalan en el build)
+backend/node_modules
+node_modules
+
+# Archivos de desarrollo
+backend/Dockerfile
+docker-compose.yml
+*.md
+.git
+.gitignore

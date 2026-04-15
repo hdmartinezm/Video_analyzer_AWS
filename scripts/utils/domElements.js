@@ -1,0 +1,17 @@
+export const videoUrlInput = document.getElementById('video-url');
+export const videoFileInput = document.getElementById('video-file');
+export const submitBtn = document.getElementById('submit-btn');
+export const loader = document.getElementById('loader');
+export const resultsContainer = document.getElementById('results-container');
+export const summaryBox = document.getElementById('summary-box');
+export const englishBox = document.getElementById('english-box');
+export const spanishBox = document.getElementById('spanish-box');
+export const chaptersBox = document.getElementById('chapters-box');
+export const transcriptionEnBox = document.getElementById('transcription-en-box');
+export const transcriptionEsBox = document.getElementById('transcription-es-box');
+export const statusBox = document.getElementById('status-box');
+export const videoPlayerContainer = document.getElementById('video-player-container');
+export const videoTitle = document.getElementById('video-title');
+export const videoDescription = document.getElementById('video-description');
+export const chaptersCount = document.getElementById('chapters-count');
+export const mainContainer = document.querySelector('.main-container');

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis Inteligente de Videos</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <div class="main-container">
+            <h1>Análisis Inteligente de Videos</h1>
+            <div class="form-container">
+                <div class="input-group">
+                    <label for="video-url">URL del Video de YouTube:</label>
+                    <input type="text" id="video-url" placeholder="https://www.youtube.com/watch?v=...">
+                </div>
+                <div class="input-group">
+                    <label for="video-file">Sube un archivo MP4:</label>
+                    <input type="file" id="video-file" accept=".mp4">
+                </div>
+                <button id="submit-btn">Procesar</button>
+            </div>
+        </div>
+        <div id="loader" class="loader" style="display: none;"></div>
+        <div id="status-box" class="status-box"></div>
+        <div id="results-container" class="results-container" style="display: none;">
+            <div id="video-player-container" class="video-player-container">
+                <div id="video-player"></div>
+                <video id="mp4-player" controls style="display: none; width: 100%;"></video>
+                <div id="video-details" class="video-details">
+                    <h2 id="video-title"></h2>
+                    <p id="video-description"></p>
+                </div>
+            </div>
+            <div class="content-section">
+                <h2 class="section-title">Chapters (<span id="chapters-count">0</span>)</h2>
+                <div class="result-box" id="chapters-box">
+                    <div class="scrollable-content"></div>
+                </div>
+            </div>
+            <div class="content-section">
+                <h2 class="section-title">Resumen (ES)</h2>
+                <div class="result-box" id="spanish-box">
+                    <div class="scrollable-content"></div>
+                </div>
+            </div>
+            <div class="content-section">
+                <h2 class="section-title">Summary (EN)</h2>
+                <div class="result-box" id="english-box">
+                    <div class="scrollable-content"></div>
+                </div>
+            </div>
+            <div class="content-section">
+                <h2 class="section-title">Transcripción Original</h2>
+                <div class="result-box" id="summary-box">
+                    <div class="scrollable-content"></div>
+                </div>
+            </div>
+            <div class="content-section">
+                <h2 class="section-title">Transcription (EN)</h2>
+                <div class="result-box" id="transcription-en-box">
+                    <div class="scrollable-content"></div>
+                </div>
+            </div>
+            <div class="content-section">
+                <h2 class="section-title">Transcripción (ES)</h2>
+                <div class="result-box" id="transcription-es-box">
+                    <div class="scrollable-content"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="scripts/app.js"></script>
+</body>
+</html>

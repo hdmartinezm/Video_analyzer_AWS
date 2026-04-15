@@ -1,0 +1,399 @@
+/* Estilos generales */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: linear-gradient(to bottom, #232F3E, #007bff);
+    color: white;
+    margin: 0;
+    padding: 1.5rem; /* Reducido para minimizar scroll vertical */
+    line-height: 1.6;
+    height: 100vh; /* Cambiado de min-height para ocupar exactamente la ventana */
+    overflow: hidden; /* Prevenir scroll tanto horizontal como vertical */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: visible; /* Permitir que todo el contenido se muestre */
+}
+
+/* Encabezado y Formulario agrupados en una tarjeta */
+.main-container {
+    text-align: center;
+    margin-bottom: 1.5rem; /* Reducido para minimizar scroll vertical */
+    background: rgba(0, 0, 0, 0.8);
+    padding: 1.5rem; /* Reducido para evitar desbordamiento */
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(255, 255, 255, 0.1);
+    width: 100%;
+    max-width: 100%;
+    flex-shrink: 0; /* Evitar que se encoja */
+}
+
+h1 {
+    color: white;
+    margin-top: 0; /* Quitar margen superior si el contenedor ya tiene padding */
+    margin-bottom: 1rem; /* Reducido para minimizar espacio vertical */
+}
+
+/* Contenedor del Formulario */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem; /* Aumentado para más espacio entre inputs y botón */
+    margin-bottom: 0; /* El margen ahora está en .main-container */
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px; /* Limita el ancho de los inputs */
+}
+
+.input-group label {
+    margin-bottom: 0.75rem; /* Aumentado */
+    font-weight: bold;
+    text-align: left;
+    color: white;
+}
+
+/* Estilos para Inputs y Botón */
+input[type="text"],
+input[type="file"] {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #555;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+    background-color: #333;
+    color: white;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="file"]:focus {
+    border-color: #ffc107;
+    box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.25);
+    outline: none;
+}
+
+input[type="file"] {
+    padding: 0.5rem; /* Ajuste para el input de archivo */
+}
+
+#submit-btn {
+    padding: 0.9rem 2.5rem; /* Aumentado para un botón más prominente */
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: black;
+    background-color: #ffc107;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 1rem; /* Espacio adicional sobre el botón */
+}
+
+#submit-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+#submit-btn:hover:not(:disabled) {
+    background-color: #e0a800;
+    transform: translateY(-2px); /* Ligero efecto de elevación */
+}
+
+/* Loader y Mensajes de Estado */
+.loader {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #ffc107;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 1.5rem auto; /* Reducido para minimizar scroll vertical */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.status-box {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #eee;
+    margin-bottom: 1.5rem; /* Reducido para minimizar scroll vertical */
+}
+
+/* Contenedor y Cajas de Resultados */
+.results-container {
+    display: flex;
+    flex-direction: column; /* Cambiado a columna para el diseño de la imagen */
+    gap: 0.75rem; /* Reducido para menor separación entre secciones */
+    justify-content: flex-start; /* Cambiado para evitar centrado vertical */
+    align-items: center; /* Centrar los elementos */
+    background-color: rgba(0, 0, 0, 0.85); /* Fondo oscuro para el contenedor */
+    padding: 0.75rem; /* Reducido para evitar desbordamiento */
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%; /* Altura máxima para activar scroll vertical */
+    overflow-y: auto; /* Scroll vertical cuando el contenido exceda la altura */
+    overflow-x: hidden; /* Ocultar scroll horizontal */
+    flex-shrink: 0; /* No permitir que se encoja */
+}
+
+/* Estilos para la barra de scroll del results-container */
+.results-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.results-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.results-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 193, 7, 0.6);
+    border-radius: 10px;
+}
+
+.results-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 193, 7, 0.8);
+}
+
+.video-player-container {
+    width: 100%;
+    max-width: 800px; /* Ancho máximo del reproductor */
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(255, 255, 255, 0.1);
+    overflow: hidden; /* Para que el iframe no se salga */
+    margin-bottom: 1rem; /* Reducido para minimizar scroll vertical */
+    box-sizing: border-box;
+    min-height: 450px; /* Altura mínima para asegurar visibilidad */
+    display: block; /* Asegurar que se muestre */
+    position: relative; /* Para mejor control de posicionamiento */
+}
+
+#video-player {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    overflow: hidden;
+    width: 100%;
+    display: block;
+    background-color: #000; /* Fondo negro para mejor visibilidad */
+}
+
+#video-player iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* Clases para controlar la visibilidad del video player */
+.video-player-container.show {
+    display: block !important;
+}
+
+.video-player-container.hide {
+    display: none !important;
+}
+
+.video-details {
+    padding: 1rem; /* Reducido para minimizar scroll vertical */
+    text-align: left;
+}
+
+.video-details h2 {
+    margin-top: 0;
+    color: white;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.video-details p {
+    color: #ccc;
+    font-size: 1rem;
+}
+
+.content-section {
+    width: 100%;
+    max-width: 1000px; /* Ancho máximo para las secciones de contenido */
+    margin-bottom: -1rem; /* Reducido para menor separación entre secciones */
+    box-sizing: border-box;
+    display: block; /* Disposición vertical simple */
+}
+
+.section-title {
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 0; /* Sin margen inferior en disposición horizontal */
+    margin-right: 1rem; /* Margen derecho para separación horizontal */
+    text-align: left;
+    flex-shrink: 0; /* No permitir que se encoja */
+    white-space: nowrap; /* Evitar que el texto se divida */
+}
+
+.result-box {
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid #555;
+    border-radius: 12px; /* Aumentado para bordes más suaves */
+    padding: 0.75rem 1rem; /* Reducido para minimizar scroll vertical */
+    box-shadow: 0 6px 12px rgba(255, 255, 255, 0.1); /* Sombra más pronunciada */
+    text-align: left;
+    color: white;
+    position: relative; /* Para el placeholder */
+    width: auto; /* Ancho automático para disposición horizontal */
+    min-width: 300px; /* Ancho mínimo para evitar que se encoja demasiado */
+    flex-shrink: 0; /* No permitir que se encoja */
+}
+
+.result-box h2 {
+    display: none; /* Ocultar los h2 individuales dentro de result-box */
+}
+
+.result-box .placeholder-text {
+    color: #aaa;
+    font-style: italic;
+    text-align: center;
+    /* padding: 1rem; */
+}
+
+.scrollable-content {
+    max-height: 5rem; /* Altura para 3-4 líneas de contenido */
+    overflow-y: auto; /* Scroll vertical para múltiples líneas */
+    overflow-x: hidden; /* Ocultar scroll horizontal */
+    padding-right: 10px; /* Espacio para la barra de scroll vertical */
+    white-space: normal; /* Permitir división de líneas */
+    line-height: 1.4; /* Espaciado de línea para mejor legibilidad */
+}
+
+.scrollable-content::-webkit-scrollbar {
+    width: 8px; /* Ancho para scroll vertical */
+}
+
+.scrollable-content::-webkit-scrollbar-track {
+    background: #333;
+    border-radius: 10px;
+}
+
+.scrollable-content::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+.scrollable-content::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.result-box ul {
+    padding-left: 0;
+    list-style: none; /* Quitar viñetas por defecto */
+    display: block; /* Volver a disposición vertical para scroll */
+    margin: 0;
+}
+
+.result-box li {
+    margin-bottom: 0.5rem; /* Restaurar margen inferior */
+    white-space: normal; /* Permitir división de texto */
+}
+
+.result-box li a {
+    color: #ffc107;
+    text-decoration: none;
+}
+
+.result-box li a:hover {
+    text-decoration: underline;
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+    .result-box {
+        flex-basis: 100%; /* Una columna en pantallas más pequeñas */
+    }
+
+    body {
+        padding: 0.75rem; /* Reducido para móviles */
+    }
+
+    .main-container {
+        padding: 0.75rem; /* Reducido para móviles */
+        margin-bottom: 1rem; /* Reducido para minimizar scroll */
+    }
+
+    .results-container {
+        padding: 0.5rem; /* Reducido para móviles */
+        max-height: 50vh; /* Altura reducida para móviles */
+    }
+
+    .result-box {
+        padding: 0.5rem 0.75rem; /* Reducido para móviles */
+    }
+
+    .video-details h2 {
+        font-size: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 0.5rem; /* Mínimo para pantallas muy pequeñas */
+    }
+
+    .main-container {
+        padding: 0.5rem; /* Mínimo para pantallas muy pequeñas */
+        margin-bottom: 0.75rem; /* Reducido para minimizar scroll */
+    }
+
+    .results-container {
+        padding: 0.25rem; /* Mínimo para pantallas muy pequeñas */
+        max-height: 40vh; /* Altura mínima para pantallas muy pequeñas */
+    }
+
+    .result-box {
+        padding: 0.25rem 0.5rem; /* Mínimo para pantallas muy pequeñas */
+    }
+
+    h1 {
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem; /* Reducido para minimizar scroll */
+    }
+
+    .section-title {
+        font-size: 1.1rem;
+    }
+
+    /* Ajustes para scroll vertical en móviles */
+    .content-section {
+        flex-direction: column; /* Disposición vertical en móviles */
+        overflow-x: visible; /* Sin scroll horizontal en móviles */
+        overflow-y: visible; /* Sin scroll vertical forzado en móviles */
+    }
+
+    .scrollable-content {
+        max-height: 4rem; /* Altura reducida para móviles */
+    }
+}
